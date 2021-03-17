@@ -6,8 +6,6 @@ if [ $? -eq 0 ]; then
     echo "yes the user exists"
 else
    h=/home/docker
-   adduser docker --gecos "Docker" --home $h --shell /bin/bash --disabled-password
-   echo -e "docker\ndocker\n" | passwd docker
    mkdir -p $h/.ssh 
    chmod 700 $h/.ssh 
    mv /usr/local/bin/id_rsa* $h/.ssh/. 
