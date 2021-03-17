@@ -1,18 +1,18 @@
 FROM ubuntu:xenial
 MAINTAINER Richard J. Acton <racton@uni-koeln.de>
 
-RUN echo "start" &&\
+RUN echo "start" && \
 
 # Update
-RUN echo "OS package updates" &&\
-    apt-get update &&\
-    apt-get -y upgrade &&\
+RUN echo "OS package updates" && \
+    apt-get update && \
+    apt-get -y upgrade && \
     apt-get dist-upgrade
 
 # Web server setup
 
 ## Web server package installs
-RUN echo "OS package installs" &&\
+RUN echo "OS package installs" && \
 ### Install apache, PHP, and supplimentary programs. curl and lynx-cur are for debugging the container.
   DEBIAN_FRONTEND=noninteractive apt-get -y install apache2 \
                     curl mysql-server libreadline-dev libsqlite3-dev libbz2-dev libssl-dev python python-dev \
