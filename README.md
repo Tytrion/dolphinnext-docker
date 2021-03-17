@@ -16,7 +16,7 @@ Build docker image
 1. To build docker image first clone one of the latest dolphinnext-docker
 
 ```
-git clone https://github.com/CECADBioinformaticsCoreFacility/dolphinnext-docker.git
+git clone https://github.com/Tytrion/dolphinnext-docker.git
 ```
 
 2. Build the image
