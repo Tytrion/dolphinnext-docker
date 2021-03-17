@@ -1,7 +1,7 @@
 FROM ubuntu:xenial
 MAINTAINER Richard J. Acton <racton@uni-koeln.de>
 
-RUN echo "start" && \
+RUN echo "start"
 
 # Update
 RUN echo "OS package updates" && \
