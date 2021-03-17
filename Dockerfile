@@ -1,20 +1,20 @@
 FROM ubuntu:xenial
 MAINTAINER Richard J. Acton <racton@uni-koeln.de>
 
-RUN echo "start"
+RUN echo "start" &&\
 
 # Update
-RUN echo "OS package updates"
-RUN apt-get update
-RUN apt-get -y upgrade
-RUN apt-get dist-upgrade
+RUN echo "OS package updates" &&\
+    apt-get update &&\
+    apt-get -y upgrade &&\
+    apt-get dist-upgrade
 
 # Web server setup
 
 ## Web server package installs
-RUN echo "OS package installs"
+RUN echo "OS package installs" &&\
 ### Install apache, PHP, and supplimentary programs. curl and lynx-cur are for debugging the container.
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install apache2 \
+  DEBIAN_FRONTEND=noninteractive apt-get -y install apache2 \
                     curl mysql-server libreadline-dev libsqlite3-dev libbz2-dev libssl-dev python python-dev \
                     libmysqlclient-dev python-pip git expect default-jre default-jdk \
                     libxml2-dev software-properties-common gdebi-core wget \
@@ -22,15 +22,15 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install apache2 \
                     libx11-dev xorg-dev libbz2-dev liblzma-dev libpcre3-dev libcurl4-openssl-dev \
                     bzip2 ca-certificates libglib2.0-0 libxext6 libsm6 libxrender1 sendmail \
                     mercurial subversion libarchive-dev uuid-dev squashfs-tools build-essential \
-                    libgpgme11-dev libseccomp-dev pkg-config 
+                    libgpgme11-dev libseccomp-dev pkg-config &&\
 
 
-RUN apt-get clean
-RUN pip install simple-crypt mysql-connector
-RUN add-apt-repository -y ppa:opencpu/opencpu-2.1
-RUN LC_ALL=C.UTF-8 apt-add-repository ppa:ondrej/php
-RUN apt-get update
-RUN apt-get -y install php7.2 ssh openssh-server \
+  	apt-get clean &&\
+    pip install simple-crypt mysql-connector &&\
+    add-apt-repository -y ppa:opencpu/opencpu-2.1 &&\
+    LC_ALL=C.UTF-8 apt-add-repository ppa:ondrej/php &&\
+    apt-get update &&\
+    apt-get -y install php7.2 ssh openssh-server \
     php-pear php7.2-curl php7.2-dev php7.2-gd php7.2-mbstring php7.2-zip php7.2-mysql \ 
     php7.2-xml php7.2-ldap s3cmd
 
